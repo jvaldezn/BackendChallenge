@@ -10,8 +10,7 @@ Lenguaje de Programación:
 Funcionalidades Requeridas:
 
 -Se debe crear una API para aplicar un tipo de cambio a un monto.
--La API debe recibir el valor “monto“, “moneda origen”, “moneda destino“ y devolver el “monto”, “monto con
-tipo de cambio”, “moneda origen”, “moneda destino“ y “tipo de cambio”.
+-La API debe recibir el valor “monto“, “moneda origen”, “moneda destino“ y devolver el “monto”, “monto con tipo de cambio”, “moneda origen”, “moneda destino“ y “tipo de cambio”.
 -Se debe crear la información del tipo de cambio en una in memory database u otra.
 -Dockerizar e invocar a la API desde el contenedor. (Windows o CentOS)
 -El uso de la API debe ser mostrada desde Postman.
