@@ -1,0 +1,36 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand text-white">Amount Exchange Calculator</a>
+  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+</nav>
+
+<div class="wrapper">
+  <div class="wrapped-div">
+    <div class="tab-header">
+      <br />
+      <br />
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+          <div class="form-group">
+            <label>Currency From</label>
+            <input type="text" class="form-control" #UserName="ngModel" name="CurrencyFrom" [(ngModel)]="formCurrency.CurrencyFrom" required>
+          </div>
+          <div class="form-group">
+            <label>Currency To</label>
+            <input type="text" class="form-control" #Password="ngModel" name="CurrencyTo" [(ngModel)]="formCurrency.CurrencyTo" required>
+          </div>
+          <div class="form-group">
+            <label>Amount</label>
+            <input type="number" class="form-control" #Password="ngModel" name="Amount" [(ngModel)]="formCurrency.Amount" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8 offset-md-2">
+              <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Calculate</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
