@@ -55,20 +55,26 @@ namespace BackendChallenge.API.Controllers
             int currencyId_From = await _context.Currency.Where(s => s.Code == from).Select(z => z.CurrencyId).SingleAsync();
             int currencyId_To = await _context.Currency.Where(s => s.Code == to).Select(z => z.CurrencyId).SingleAsync();
 
-            var data = await (from c in _context.CurrencyExchange
-                              where c.CurrencyId_From == currencyId_From && c.CurrencyId_To == currencyId_To
-                              select c).FirstOrDefaultAsync();
-            try
+            if (currencyId_From != 0 && currencyId_To != 0)
             {
-                data.Equivalent = amount;
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { success = false, msg = ex.Message });
-            }
+                var data = await (from c in _context.CurrencyExchange
+                                  where c.CurrencyId_From == currencyId_From && c.CurrencyId_To == currencyId_To
+                                  select c).FirstOrDefaultAsync();
+                try
+                {
+                    data.Equivalent = amount;
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { success = false, msg = ex.Message });
+                }
 
-            return Ok(new { success = true, msg = "Successfully updated." });
+                return Ok(new { success = true, msg = "Successfully updated." });
+            }
+            else {
+                return NotFound(new { success = false, msg = "The currency From or To doesnt exist." });
+            }
         }
 
         // GET: api/Currencies
